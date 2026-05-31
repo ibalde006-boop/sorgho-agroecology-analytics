@@ -23,7 +23,7 @@ Développé sous **Jupyter Notebook**, ce volet se concentre sur l'analyse macro
 * **Analyse en Composantes Principales (ACP) :** Segmentation et typologie des producteurs de sorgho en fonction de leurs pratiques, de leurs contraintes phytosanitaires (pression du *Striga*) et de leurs rendements globaux.
 * **Livrables visuels :** Cartographies de corrélations et graphiques ACP en Haute Définition (HD).
 ![Cartographies de corrélations](visualisations_rendements_sorgho.png)
-![graphiques ACP](visualisations_rendements_sorgho.png)
+![graphiques ACP](acp_producteurs_sorgho.png)
 
 ### 📊 Volet 2 : Analyse Biométrique Fine & Efficience des Leviers (Implémentation R)
 Développé sous **RStudio**, ce volet traite spécifiquement des données collectées à la récolte pour évaluer les composantes de rendement :
