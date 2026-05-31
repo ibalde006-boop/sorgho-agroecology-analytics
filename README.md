@@ -1,25 +1,51 @@
-# 🌾 Suivi Technico-Économique & Diagnostics Agroécologiques du Sorgho (Projet PEA-PETTAL)
+# 🌾 Sorgho Agroecology Analytics - Suivi Technico-Économique & Diagnostics (Projet PEA-PETTAL)
 
-Ce dépôt documente la gestion agronomique, le suivi des itinéraires techniques et la structuration des observations de terrain réalisés en tant que **Responsable de production Sorgho** lors de la campagne hivernale 2025. Ce projet s'inscrit dans le cadre du **Projet PEA-PETTAL** au sein de la Ferme Intégrée de l'USSEIN à Mbadakhoune.
+Ce dépôt rassemble l'infrastructure d'analyse de données, la modélisation statistique et la structuration des observations de terrain réalisés en tant que **Responsable de production Sorgho** lors de la campagne hivernale 2025. Ce projet s'inscrit dans le cadre du **Projet PEA-PETTAL** au sein de la Ferme Intégrée de l'USSEIN à Mbadakhoune (Région de Kaolack, Sénégal).
 
-## 🎯 Contexte & Objectifs Réels
-* **Rôle :** Responsable de production Sorgho (Campagne hivernale 2025).
-* **Cadre institutionnel :** Projet PEA-PETTAL, Ferme Intégrée de l'USSEIN (Mbadakhoune, Sénégal).
-* **Objectif :** Piloter et documenter les performances de la culture de sorgho sous conduite agroécologique, de la gestion du semi jusqu'à l'évaluation des composantes du rendement.
+L'objectif principal est de piloter et d'évaluer scientifiquement les performances de la culture de sorgho sous conduite agroécologique à travers un pipeline d'analyse de données hybride (**Python & R**).
 
-## 🛠️ Implémentation Technique & Compétences Terrain
-Le projet a mobilisé un suivi rigoureux et méthodique structuré autour de 4 piliers d'ingénierie agronomique :
+---
 
-1. **Gestion de la première phase de semi Agroécologique :**
-   * Planification, suivi des dynamiques de levée, gestion optimisée des intrants organiques et préparation des plants pour garantir une résilience maximale face au stress hydrique au champ.
-2. **Suivi Rigoureux des Itinéraires Techniques :**
-   * Collecte de données phénologiques précises (dates clés de levée, tallage, montaison, épiaison, maturité).
-   * Supervision des opérations culturales et optimisation des densités de semis en conditions de terrain.
-3. **Diagnostics Phytosanitaires de Terrain :**
-   * Surveillance active, identification et suivi de la pression des bioagresseurs (ravageurs, adventices parasites comme le *Striga*, maladies foliaires).
-   * Structuration de grilles d'évaluation de la sévérité et de l'incidence des attaques pour orienter les choix de lutte agroécologique.
-4. **Collecte et Analyse des Données de Rendement :**
-   * Prélèvement et centralisation des données biométriques à la récolte (biomasse totale, poids de mille grains, rendement grain estimé) afin d'évaluer l'efficience des leviers de transition agroécologique testés.
+## 🎯 Contexte & Objectifs du Projet
+* **Rôle :** Responsable de production Sorgho & Data Analyst.
+* **Cadre institutionnel :** Projet PEA-PETTAL, Ferme Intégrée de l'USSEIN.
+* **Problématique :** Évaluer l'efficience des leviers de transition agroécologique (gestion des intrants organiques, associations de cultures, lutte intégrée) sur le rendement final et analyser les profils socio-économiques des producteurs de la zone.
 
-## 🧰 Compétences & Thématiques clés mobilisées
-`Agroécologie` | `Itinéraires Techniques` | `Diagnostics Phytosanitaires` | `Suivi Phénologique` | `Projet PEA-PETTAL` | `Agronomie de Terrain` | `Collecte de Données Agricoles`
+---
+
+## 🛠️ Architecture de l'Analyse Métier (Double Approche Data)
+
+Le projet est structuré en deux grands volets de traitement de données pour répondre aux exigences agronomiques du terrain :
+
+### 🐍 Volet 1 : Profilage des Producteurs & Rendements Globaux (Implémentation Python)
+Développé sous **Jupyter Notebook**, ce volet se concentre sur l'analyse macro-économique et exploratoire des exploitations :
+* **Statistiques Descriptives Avancées :** Nettoyage et structuration des bases de données de la campagne.
+* **Analyse en Composantes Principales (ACP) :** Segmentation et typologie des producteurs de sorgho en fonction de leurs pratiques, de leurs contraintes phytosanitaires (pression du *Striga*) et de leurs rendements globaux.
+* **Livrables visuels :** Cartographies de corrélations et graphiques ACP en Haute Définition (HD).
+
+### 📊 Volet 2 : Analyse Biométrique Fine & Efficience des Leviers (Implémentation R)
+Développé sous **RStudio**, ce volet traite spécifiquement des données collectées à la récolte pour évaluer les composantes de rendement :
+* **Indicateurs clés étudiés :** Biomasse totale, Poids de Mille Grains (PMG), et Rendement grain estimé.
+* **Modélisation statistique :** Tests d'hypothèses et analyses de variance (ANOVA / non-paramétriques) pour mesurer l'impact réel et significatif des leviers agroécologiques testés sur les composantes biométriques.
+* **Visualisation :** Analyse graphique descriptive fine avec `ggplot2` (Boxplots d'efficience, matrices de corrélation de Pearson).
+
+---
+
+## 📂 Structure du Dépôt
+
+* 📁 `analyse_sorgho_kaolack.ipynb` : Notebook Jupyter contenant le code Python (Nettoyage, Statistiques descriptives, ACP).
+* 📁 `analyse_biometrique_rendement.R` : Script R pour l'évaluation fine des composantes du rendement et tests d'efficience agroécologique.
+* 📁 `producteurs_sorgho_mbadakhoune.csv` : Base de données brute centralisant les relevés phénologiques, phytosanitaires et biométriques.
+* 📁 `acp_producteurs_sorgho.png` : Graphique d'analyse factorielle (ACP) généré par Python.
+* 📁 `visualisations_rendements_sorgho.png` : Graphiques de distribution des rendements globaux.
+
+---
+
+## 🧰 Compétences Data & Thématiques Clés Mobilisées
+
+* **Langages & Environnements :** Python (`Pandas`, `Seaborn`, `Scikit-learn`) | R (`Tidyverse`, `ggplot2`) | Jupyter Notebook | RStudio
+* **Agronomie de Terrain :** Itinéraires Techniques, Diagnostics Phytosanitaires (Suivi du *Striga*), Relevés Phénologiques.
+* **Science des Données :** Analyse Multivariée (ACP), Biostatistiques, Analyse de Variance, Visualisation de Données HD.
+
+---
+🔬 *Projet réalisé à la Ferme Intégrée de l'USSEIN - Contenus et codes open-source pour le développement de l'agroécologie au Sénégal.*
