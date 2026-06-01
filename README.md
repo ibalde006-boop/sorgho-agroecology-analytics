@@ -35,21 +35,9 @@ Après correction du protocole d'importation (séparateur de champ `,` via `read
 * **Variables Explicatives & Facteurs :** Variété de sorgho (`variete` : Fadda, Darou, Locale), Village (`village` : 5 modalités), et Pression Phytosanitaire (`pression_phytosanitaire` : Aucune, Striga, Chenille Légionnaire).
 * **Variables de Conduite :** `superficie_ha`, `pluviometrie_mm`, `engrais_npk_kg_ha` et `taux_germination_pct`.
 
-### 1. Variabilité du Rendement selon la Variété (R_boxplot_rendement_variete.jpg)
-**Observations** : Ce graphique en boîtes à moustaches montre une hiérarchie nette. La variété hybride Fadda domine avec le rendement médian le plus élevé (autour de 1700 kg/ha).
-Darou (variété améliorée) se situe au centre avec une médiane proche de 1500 kg/ha. La variété Locale est en retrait avec une médiane à environ 1300 kg/ha.
-**Interprétation** : L'introduction des semences certifiées (Fadda et Darou) est un succès technique. L'hybride Fadda exprime un fort potentiel génétique. Cependant, le grand étalement des points individuels (jitter) montre que la variété ne fait pas tout : un mauvais itinéraire technique peut faire chuter le rendement d'un hybride au niveau d'une variété locale.
 
-### 2. Rendement par Village et Niveau de Pression Phytosanitaire (R_boxplot_rendement_village_phyto.png)
-**Observations** : Le comportement des rendements est strictement identique dans les 5 villages (Gandiaye, Keur Diatta, Mbadakhoune, Ndiédieng, Thioffior).
-Aucune pression (Rouge) : Le rendement est optimal, entre 1600 et 1900 kg/ha.
-Striga (Bleu) : Le rendement chute et plafonne entre 1100 et 1300kg/ha.
-Chenille Légionnaire (Vert) : C'est l'effondrement global, les rendements tombent tous sous la barre des 1000 kg/ha.
-**Interprétation** : La pression biotique est le principal facteur limitant de la zone, et ce fléau est macro-régional (il frappe de la même façon partout). Si le Striga (plante parasite) pénalise la récolte en volant les nutriments aux racines, la Chenille Légionnaire d'Automne est une catastrophe majeure qui détruit l'appareil foliaire et annule instantanément le potentiel de la culture.
 
-### 3. Matrice de Corrélation (R_matrice_correlation.png)
-**Observations** : La corrélation la plus intense et la plus visible (ellipse verte très étirée) est celle entre rendement_kg_ha et pmg avec un coefficient de r = 0,91. Le rendement est également corrélé positivement à l'indice de biomasse indice_ndvi (r = 0,48).
-**Interprétation** : D'un point de vue mathématique, le rendement du sorgho à Mbadakhoune est directement dicté par le remplissage du grain (le Poids de Mille Grains). Plus les grains sont lourds, plus le rendement final en kg/ha est élevé.
+
 
 ### 4. Relation Biomasse (NDVI), PMG et Rendement (R_relation_biomasse_pmg_rendement.jpg)
 **Observations** : Ce nuage de points montre une trajectoire linéaire ascendante (ligne pointillée). Plus l'indice NDVI (axe X) augmente, plus le rendement (axe Y) grimpe. De plus, les points passent d'un jaune vif (faible PMG ~24g) en bas à gauche à un vert très foncé (fort PMG ~34g) en haut à droite.
@@ -91,17 +79,42 @@ Pour synthétiser la matrice de variance-covariance des 500 exploitations, une A
 
 ### 11. Pipeline de Visualisation et Livrables Graphiques (`ggplot2`)
 Le script exporte et actualise automatiquement dans le répertoire de travail `/Projet_Sorgho` les figures haute résolution (`.png`, 300 DPI) suivantes :
-1. Histogramme de densité avec ajustement gaussien (Skewness/Kurtosis). ![R_analyse_forme_rendement](R_analyse_forme_rendement.png) 
-2.  ![R_boxplot_rendement_variete](R_boxplot_rendement_variete.png) : Distribution du rendement combinée avec affichage des points individuels (*jitter*).
-3.  ![R_boxplot_rendement_village_phyto](R_boxplot_rendement_village_phyto.png) : Impact croisé des bio-agresseurs par zone géographique.
-4.  ![R_matrice_correlation](R_matrice_correlation.png) : Graphique d'ellipses de corrélations de Pearson.
-5. ![R_relation_biomasse_pmg_rendement](R_relation_biomasse_pmg_rendement.png) : Nuage de points trivarié (NDVI vs Rendement indexé sur le gradient de PMG).
-6.  ![R_acp_valeurs_propres](R_acp_valeurs_propres.png)
-7.  ![R_acp_cercle_variables](R_acp_cercle_variables.png)
-8.  ![R_acp_individus_varietes](R_acp_individus_varietes.png) : Triptyque complet de l'analyse factorielle.
-9.  `analyse_sorgho_kaolack.ipynb` : Notebook Jupyter contenant le code Python (Nettoyage, Statistiques descriptives, ACP).
-10.  `analyse_biometrique_rendement.R` : Script R pour l'évaluation fine des composantes du rendement et tests d'efficience agroécologique.
-11.  `producteurs_sorgho_mbadakhoune.csv` : Base de données brute centralisant les relevés phénologiques, phytosanitaires et biométriques.
+
+![R_analyse_forme_rendement](R_analyse_forme_rendement.png)
+Histogramme de densité avec ajustement gaussien (Skewness/Kurtosis). 
+
+![R_boxplot_rendement_variete](R_boxplot_rendement_variete.png)
+Distribution du rendement combinée avec affichage des points individuels (*jitter*)
+
+### 1. Variabilité du Rendement selon la Variété (R_boxplot_rendement_variete.jpg)
+**Observations** : Ce graphique en boîtes à moustaches montre une hiérarchie nette. La variété hybride Fadda domine avec le rendement médian le plus élevé (autour de 1700 kg/ha).
+Darou (variété améliorée) se situe au centre avec une médiane proche de 1500 kg/ha. La variété Locale est en retrait avec une médiane à environ 1300 kg/ha.
+**Interprétation** : L'introduction des semences certifiées (Fadda et Darou) est un succès technique. L'hybride Fadda exprime un fort potentiel génétique. Cependant, le grand étalement des points individuels (jitter) montre que la variété ne fait pas tout : un mauvais itinéraire technique peut faire chuter le rendement d'un hybride au niveau d'une variété locale.
+
+ Impact croisé des bio-agresseurs par zone géographique
+ ![R_boxplot_rendement_village_phyto](R_boxplot_rendement_village_phyto.png) : 
+
+### 2. Rendement par Village et Niveau de Pression Phytosanitaire (R_boxplot_rendement_village_phyto.png)
+**Observations** : Le comportement des rendements est strictement identique dans les 5 villages (Gandiaye, Keur Diatta, Mbadakhoune, Ndiédieng, Thioffior).
+Aucune pression (Rouge) : Le rendement est optimal, entre 1600 et 1900 kg/ha.
+Striga (Bleu) : Le rendement chute et plafonne entre 1100 et 1300kg/ha.
+Chenille Légionnaire (Vert) : C'est l'effondrement global, les rendements tombent tous sous la barre des 1000 kg/ha.
+**Interprétation** : La pression biotique est le principal facteur limitant de la zone, et ce fléau est macro-régional (il frappe de la même façon partout). Si le Striga (plante parasite) pénalise la récolte en volant les nutriments aux racines, la Chenille Légionnaire d'Automne est une catastrophe majeure qui détruit l'appareil foliaire et annule instantanément le potentiel de la culture.
+
+Graphique d'ellipses de corrélations de Pearson
+![R_matrice_correlation](R_matrice_correlation.png)
+
+### 3. Matrice de Corrélation (R_matrice_correlation.png)
+**Observations** : La corrélation la plus intense et la plus visible (ellipse verte très étirée) est celle entre rendement_kg_ha et pmg avec un coefficient de r = 0,91. Le rendement est également corrélé positivement à l'indice de biomasse indice_ndvi (r = 0,48).
+**Interprétation** : D'un point de vue mathématique, le rendement du sorgho à Mbadakhoune est directement dicté par le remplissage du grain (le Poids de Mille Grains). Plus les grains sont lourds, plus le rendement final en kg/ha est élevé.
+
+7. ![R_relation_biomasse_pmg_rendement](R_relation_biomasse_pmg_rendement.png) : Nuage de points trivarié (NDVI vs Rendement indexé sur le gradient de PMG).
+8.  ![R_acp_valeurs_propres](R_acp_valeurs_propres.png)
+9.  ![R_acp_cercle_variables](R_acp_cercle_variables.png)
+10.  ![R_acp_individus_varietes](R_acp_individus_varietes.png) : Triptyque complet de l'analyse factorielle.
+11.  `analyse_sorgho_kaolack.ipynb` : Notebook Jupyter contenant le code Python (Nettoyage, Statistiques descriptives, ACP).
+12.  `analyse_biometrique_rendement.R` : Script R pour l'évaluation fine des composantes du rendement et tests d'efficience agroécologique.
+13.  `producteurs_sorgho_mbadakhoune.csv` : Base de données brute centralisant les relevés phénologiques, phytosanitaires et biométriques.
 ---
 
 ## 🧰 Compétences Data & Thématiques Clés Mobilisées
