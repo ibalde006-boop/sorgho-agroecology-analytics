@@ -29,35 +29,21 @@ Développé sous **Jupyter Notebook**, ce volet se concentre sur l'analyse macro
 
 Développé sous RStudio, ce volet traite spécifiquement des données collectées à la récolte auprès d'un échantillon de **500 producteurs de la zone de Mbadakhoune**. L'objectif est d'évaluer la structure des composantes du rendement, de valider mathématiquement les hypothèses de modélisation et de construire une typologie fine des performances agronomiques.
 
-### 1. Variables Établies & Pipeline de Données
+### A. Variables Établies & Pipeline de Données
 Après correction du protocole d'importation (séparateur de champ `,` via `read.csv`), la base de données consolide 11 variables clés :
 * **Variables Dépendantes (Composantes du rendement) :** Rendement grain (`rendement_kg_ha`), Poids de Mille Grains (`pmg`, simulé via une loi de distribution biologique dépendante du rendement) et Indice de biomasse foliaire (`indice_ndvi`).
 * **Variables Explicatives & Facteurs :** Variété de sorgho (`variete` : Fadda, Darou, Locale), Village (`village` : 5 modalités), et Pression Phytosanitaire (`pression_phytosanitaire` : Aucune, Striga, Chenille Légionnaire).
 * **Variables de Conduite :** `superficie_ha`, `pluviometrie_mm`, `engrais_npk_kg_ha` et `taux_germination_pct`.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### 11. Pipeline de Visualisation et Livrables Graphiques (`ggplot2`)
+### B. Pipeline de Visualisation et Livrables Graphiques (`ggplot2`)
 Le script exporte et actualise automatiquement dans le répertoire de travail `/Projet_Sorgho` les figures haute résolution (`.png`, 300 DPI) suivantes :
 
 ![R_boxplot_rendement_variete](R_boxplot_rendement_variete.png)
 Distribution du rendement combinée avec affichage des points individuels (*jitter*)
 
 ### 1. Variabilité du Rendement selon la Variété (R_boxplot_rendement_variete.jpg)
-**Observations** : Ce graphique en boîtes à moustaches montre une hiérarchie nette. La variété hybride Fadda domine avec le rendement médian le plus élevé (autour de 1700 kg/ha).
-Darou (variété améliorée) se situe au centre avec une médiane proche de 1500 kg/ha. La variété Locale est en retrait avec une médiane à environ 1300 kg/ha.
+**Observations** : Ce graphique en boîtes à moustaches montre une hiérarchie nette. La variété hybride Fadda domine avec le rendement médian le plus élevé (autour de **1700 kg/ha**).
+Darou (variété améliorée) se situe au centre avec une médiane proche de 1500 kg/ha. La variété Locale est en retrait avec une médiane à environ **1300 kg/ha**.
 **Interprétation** : L'introduction des semences certifiées (Fadda et Darou) est un succès technique. L'hybride Fadda exprime un fort potentiel génétique. Cependant, le grand étalement des points individuels (jitter) montre que la variété ne fait pas tout : un mauvais itinéraire technique peut faire chuter le rendement d'un hybride au niveau d'une variété locale.
 
  Impact croisé des bio-agresseurs par zone géographique
@@ -65,29 +51,29 @@ Darou (variété améliorée) se situe au centre avec une médiane proche de 150
 
 ### 2. Rendement par Village et Niveau de Pression Phytosanitaire (R_boxplot_rendement_village_phyto.png)
 **Observations** : Le comportement des rendements est strictement identique dans les 5 villages (Gandiaye, Keur Diatta, Mbadakhoune, Ndiédieng, Thioffior).
-Aucune pression (Rouge) : Le rendement est optimal, entre 1600 et 1900 kg/ha.
-Striga (Bleu) : Le rendement chute et plafonne entre 1100 et 1300kg/ha.
-Chenille Légionnaire (Vert) : C'est l'effondrement global, les rendements tombent tous sous la barre des 1000 kg/ha.
+**Aucune pression** (Rouge) : Le rendement est optimal, entre **1600 et 1900 kg/ha**.
+**Striga** (Bleu) : Le rendement chute et plafonne entre **1100 et 1300kg/ha**.
+**Chenille Légionnaire** (Vert) : C'est l'effondrement global, les rendements tombent tous sous la barre des **1000 kg/ha**.
 **Interprétation** : La pression biotique est le principal facteur limitant de la zone, et ce fléau est macro-régional (il frappe de la même façon partout). Si le Striga (plante parasite) pénalise la récolte en volant les nutriments aux racines, la Chenille Légionnaire d'Automne est une catastrophe majeure qui détruit l'appareil foliaire et annule instantanément le potentiel de la culture.
 
 Graphique d'ellipses de corrélations de Pearson
 ![R_matrice_correlation](R_matrice_correlation.png)
 
 ### 3. Matrice de Corrélation (R_matrice_correlation.png)
-**Observations** : La corrélation la plus intense et la plus visible (ellipse verte très étirée) est celle entre rendement_kg_ha et pmg avec un coefficient de r = 0,91. Le rendement est également corrélé positivement à l'indice de biomasse indice_ndvi (r = 0,48).
-**Interprétation** : D'un point de vue mathématique, le rendement du sorgho à Mbadakhoune est directement dicté par le remplissage du grain (le Poids de Mille Grains). Plus les grains sont lourds, plus le rendement final en kg/ha est élevé.
+**Observations** : La corrélation la plus intense et la plus visible (ellipse verte très étirée) est celle entre rendement_kg_ha et pmg avec un coefficient de **r = 0,91**. Le rendement est également corrélé positivement à l'indice de biomasse indice_ndvi (**r = 0,48**).
+**Interprétation** : D'un point de vue mathématique, le rendement du sorgho à Mbadakhoune est directement dicté par le remplissage du grain (**le Poids de Mille Grains**). Plus les grains sont lourds, plus le rendement final en kg/ha est élevé.
 
 Nuage de points trivarié (NDVI vs Rendement indexé sur le gradient de PMG)
 ![R_relation_biomasse_pmg_rendement](R_relation_biomasse_pmg_rendement.png)
 
 ### 4. Relation Biomasse (NDVI), PMG et Rendement (R_relation_biomasse_pmg_rendement.jpg)
-**Observations** : Ce nuage de points montre une trajectoire linéaire ascendante (ligne pointillée). Plus l'indice NDVI (axe X) augmente, plus le rendement (axe Y) grimpe. De plus, les points passent d'un jaune vif (faible PMG ~24g) en bas à gauche à un vert très foncé (fort PMG ~34g) en haut à droite.
+**Observations** : Ce nuage de points montre une trajectoire linéaire ascendante (ligne pointillée). Plus l'indice NDVI (axe X) augmente, plus le rendement (axe Y) grimpe. De plus, les points passent d'un jaune vif (**faible PMG ~24g**) en bas à gauche à un vert très foncé (**fort PMG ~34g**) en haut à droite.
 **Interprétation** : Ce graphique illustre la physiologie du rendement. Une excellente installation de la biomasse foliaire en début de cycle (NDVI élevé) garantit une forte activité photosynthétique. Lors de la maturation, cette énergie est transférée vers les grains, augmentant leur poids (PMG) et maximisant mécaniquement la récolte.
 
 ![R_acp_valeurs_propres](R_acp_valeurs_propres.png)
 
 ### 5. Scree Plot - Variance expliquée par axe (R_acp_valeurs_propres.png)
-**Observations** : L'axe 1 (Dim1) exprime 35,1 de la variabilité et l'axe 2 (Dim2) exprime 15,4. À eux deux, les deux premiers axes résument 50,5 de l'information totale du fichier.
+**Observations** : L'axe 1 (Dim1) exprime 35,1 de la variabilité et l'axe 2 (Dim2) exprime **15,4**. À eux deux, les deux premiers axes résument **50,5** de l'information totale du fichier.
 **Interprétation** : Ce jeu de données est multidimensionnel et varié. Retenir le premier plan factoriel (Dim 1 et Dim 2) pour l'analyse est tout à fait robuste et valide pour construire une typologie des producteurs.
 
 ![R_acp_cercle_variables](R_acp_cercle_variables.png)
@@ -102,7 +88,7 @@ Triptyque complet de l'analyse factorielle
 ![R_acp_individus_varietes](R_acp_individus_varietes.png)
 
 ### 7. Typologie des Producteurs et Profils Variétaux - ACP (R_acp_individus_varietes.jpg)
-**Observations** : Ce graphique projette les 500 producteurs sous forme de points, entourés par les ellipses de confiance à 95% des trois variétés :
+**Observations** : Ce graphique projette les **500 producteurs** sous forme de points, entourés par les ellipses de confiance à 95% des trois variétés :
 L'ellipse orange (Fadda) est nettement décentrée vers la droite (zone de haute performance et gros PMG).
 L'ellipse violette (Locale) est décalée vers la gauche (zone de faible productivité).
 L'ellipse verte (Darou) est parfaitement centrée au milieu.
@@ -143,4 +129,4 @@ producteurs_sorgho_mbadakhoune.csv : Base de données brute centralisant les rel
 * **Science des Données :** Analyse Multivariée (ACP), Biostatistiques, Analyse de Variance, Visualisation de Données HD.
 
 ---
-🔬 *Projet réalisé à la Ferme Intégrée de l'USSEIN - Contenus et codes open-source pour le développement de l'agroécologie au Sénégal.*
+*Projet réalisé à la Ferme Intégrée de l'USSEIN - Contenus et codes open-source pour le développement de l'agroécologie au Sénégal.*
