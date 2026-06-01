@@ -53,18 +53,17 @@ Pour synthétiser la matrice de variance-covariance des 500 exploitations, une A
 
 ### 5. Pipeline de Visualisation et Livrables Graphiques (`ggplot2`)
 Le script exporte et actualise automatiquement dans le répertoire de travail `/Projet_Sorgho` les figures haute résolution (`.png`, 300 DPI) suivantes :
-1.  `R_analyse_forme_rendement.png` : Histogramme de densité avec ajustement gaussien (Skewness/Kurtosis).
-2.  `R_boxplot_rendement_variete.jpg` : Distribution du rendement combinée avec affichage des points individuels (*jitter*).
-3.  `R_boxplot_rendement_village_phyto.png` : Impact croisé des bio-agresseurs par zone géographique.
-4.  `R_matrice_correlation.png` : Graphique d'ellipses de corrélations de Pearson.
-5.  `R_relation_biomasse_pmg_rendement.jpg` : Nuage de points trivarié (NDVI vs Rendement indexé sur le gradient de PMG).
-6.  `R_acp_valeurs_propres.png` / `R_acp_cercle_variables.png` / `R_acp_individus_varietes.jpg` : Triptyque complet de l'analyse factorielle.
-* 📁 `analyse_sorgho_kaolack.ipynb` : Notebook Jupyter contenant le code Python (Nettoyage, Statistiques descriptives, ACP).
-* 📁 `analyse_biometrique_rendement.R` : Script R pour l'évaluation fine des composantes du rendement et tests d'efficience agroécologique.
-* 📁 `producteurs_sorgho_mbadakhoune.csv` : Base de données brute centralisant les relevés phénologiques, phytosanitaires et biométriques.
-* 📁 `acp_producteurs_sorgho.png` : Graphique d'analyse factorielle (ACP) généré par Python.
-* 📁 `visualisations_rendements_sorgho.png` : Graphiques de distribution des rendements globaux.
-
+1.  ![R_analyse_forme_rendement](R_analyse_forme_rendement.png) : Histogramme de densité avec ajustement gaussien (Skewness/Kurtosis).
+2.  ![R_boxplot_rendement_variete](R_boxplot_rendement_variete.jpg) : Distribution du rendement combinée avec affichage des points individuels (*jitter*).
+3.  ![R_boxplot_rendement_village_phyto](R_boxplot_rendement_village_phyto.png) : Impact croisé des bio-agresseurs par zone géographique.
+4.  ![R_matrice_correlation](R_matrice_correlation.png) : Graphique d'ellipses de corrélations de Pearson.
+5. ![R_relation_biomasse_pmg_rendement](R_relation_biomasse_pmg_rendement.jpg) : Nuage de points trivarié (NDVI vs Rendement indexé sur le gradient de PMG).
+6.  ![R_acp_valeurs_propres](R_acp_valeurs_propres.png)
+7.  ![R_acp_cercle_variables](R_acp_cercle_variables.png)
+8.  ![R_acp_individus_varietes](R_acp_individus_varietes.jpg) : Triptyque complet de l'analyse factorielle.
+9.  `analyse_sorgho_kaolack.ipynb` : Notebook Jupyter contenant le code Python (Nettoyage, Statistiques descriptives, ACP).
+10.  `analyse_biometrique_rendement.R` : Script R pour l'évaluation fine des composantes du rendement et tests d'efficience agroécologique.
+11.  `producteurs_sorgho_mbadakhoune.csv` : Base de données brute centralisant les relevés phénologiques, phytosanitaires et biométriques.
 ---
 
 ## 🧰 Compétences Data & Thématiques Clés Mobilisées
